@@ -1,8 +1,11 @@
+import Header from '../Header/Header';
+import Wrapper from '../Wrapper/Wrapper';
+
 function App() {
 	return (
-		<div>
-			<h1>Hello World</h1>
-		</div>
+		<Wrapper>
+			<Header />
+		</Wrapper>
 	);
 }
 

@@ -1,0 +1,25 @@
+.icon-container {
+	background: #7c5dfa;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 2.3rem;
+	border-radius: 0 20px 20px 0;
+	position: relative;
+	overflow: hidden;
+}
+
+.icon-container::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	width: 72px;
+	height: 72px;
+	background: #9277ff;
+	border-radius: 20px 0 0 0;
+}
+
+.icon-container svg {
+	position: relative;
+	z-index: 5;
+}
