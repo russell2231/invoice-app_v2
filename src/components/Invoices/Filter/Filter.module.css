@@ -1,0 +1,13 @@
+.filter {
+	display: flex;
+	align-items: center;
+}
+
+.filter span {
+	margin-right: 1.2rem;
+	font-size: 1.2rem;
+	font-weight: 700;
+}
+
+.filter svg {
+}

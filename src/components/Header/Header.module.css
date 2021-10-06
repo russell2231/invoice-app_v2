@@ -4,6 +4,8 @@
 	height: 72px;
 	background: #373b53;
 	overflow: hidden;
+	position: sticky;
+	top: 0;
 }
 
 .actions {
@@ -25,7 +27,7 @@
 
 .profile {
 	padding: 2rem 2.4rem;
-	border-left: 1px solid #979797;
+	border-left: 1px solid #494e6e;
 }
 
 .profile img {
@@ -41,5 +43,26 @@
 	}
 	.profile {
 		padding: 2.4rem 3.2rem;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.header {
+		height: 100vh;
+		flex-direction: column;
+	}
+
+	.actions {
+		flex-direction: column;
+	}
+
+	.theme-icon {
+		padding: 32px;
+	}
+
+	.profile {
+		padding: 24px 32px;
+		border-left: none;
+		border-top: 1px solid #494e6e;
 	}
 }
