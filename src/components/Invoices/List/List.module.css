@@ -60,3 +60,37 @@ p {
 	font-weight: bold;
 	color: #0c0e16;
 }
+
+@media screen and (min-width: 768px) {
+	.link {
+		grid-template-rows: unset;
+		grid-template-areas: unset;
+		grid-template-columns: 60px 130px 120px 98px 104px 4px;
+		align-items: center;
+		padding: 16px 24px;
+	}
+
+	.id {
+		grid-area: unset;
+	}
+
+	.payment-due {
+		grid-area: unset;
+		margin-bottom: 0;
+		justify-self: start;
+	}
+
+	.client-name {
+		grid-area: unset;
+		justify-self: start;
+	}
+
+	.total {
+		grid-area: unset;
+		justify-self: end;
+	}
+
+	svg {
+		justify-self: end;
+	}
+}

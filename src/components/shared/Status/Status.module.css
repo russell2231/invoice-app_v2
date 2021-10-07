@@ -62,3 +62,10 @@
 .status.draft .text {
 	color: #373b53;
 }
+
+@media screen and (min-width: 768px) {
+	.status {
+		grid-area: unset;
+		padding: 13px 0;
+	}
+}

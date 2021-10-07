@@ -2,11 +2,34 @@ import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../../App/context';
 import Status from '../../shared/Status/Status';
 
+import { IoIosArrowForward } from 'react-icons/io';
+
 import styles from './List.module.css';
 
 const List = () => {
 	const { state, windowWidth } = useGlobalContext();
 	const isEmpty = state.invoices.length === 0;
+
+	const dateToString = (date) => {
+		const displayOptions = {
+			day: '2-digit',
+			month: 'short',
+			year: 'numeric',
+		};
+		const newDate = new Date(date).toLocaleString('en-US', displayOptions);
+
+		return newDate;
+	};
+
+	const numberToString = (number) => {
+		const newNumber = number.toLocaleString('en-US', {
+			currency: 'USD',
+			minimumFractionDigits: 2,
+			maximumFractionDigits: 2,
+		});
+
+		return newNumber;
+	};
 
 	return (
 		<ul className={styles.list}>
@@ -17,10 +40,13 @@ const List = () => {
 							<span className={styles.hash}>#</span>
 							{id}
 						</p>
-						<p className={styles['payment-due']}>Due {paymentDue}</p>
+						<p className={styles['payment-due']}>
+							Due {dateToString(paymentDue)}
+						</p>
 						<p className={styles['client-name']}>{clientName}</p>
-						<p className={styles.total}>${total.toFixed(2)}</p>
+						<p className={styles.total}>${numberToString(total)}</p>
 						<Status status={status} />
+						{windowWidth >= 768 && <IoIosArrowForward />}
 					</Link>
 				</li>
 			))}
