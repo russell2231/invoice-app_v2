@@ -1,5 +1,4 @@
 import { Route, Switch } from 'react-router';
-
 import Header from '../Header/Header';
 import Wrapper from '../Wrapper/Wrapper';
 import Invoices from '../Invoices/Invoices';

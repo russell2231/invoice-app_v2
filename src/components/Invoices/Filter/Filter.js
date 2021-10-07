@@ -2,11 +2,11 @@ import { IoIosArrowDown } from 'react-icons/io';
 
 import styles from './Filter.module.css';
 
-const Filter = () => {
+const Filter = ({ isDesktop }) => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.filter}>
-				<span>Filter</span>
+				<span>Filter {isDesktop && 'by status'}</span>
 				<IoIosArrowDown />
 			</div>
 		</div>

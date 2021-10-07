@@ -1,19 +1,31 @@
 import Filter from './Filter/Filter';
 import Button from '../shared/Button/Button';
+import List from './List/List';
+import { useGlobalContext } from '../App/context';
 
 import styles from './Invoices.module.css';
 
 const Invoices = () => {
+	const { state, windowWidth } = useGlobalContext();
+	const isDesktop = windowWidth >= 768;
+
 	return (
 		<section className={styles.container}>
-			<div className={styles.info}>
-				<h1>Invoices</h1>
-				<span>7 invoices</span>
-			</div>
-			<Filter />
-			<Button primary newInvoice>
-				New
-			</Button>
+			<header className={styles.header}>
+				<div className={styles.info}>
+					<h1>Invoices</h1>
+					<span>
+						{windowWidth >= 768
+							? `There are ${state.invoices.length} total invoices`
+							: `${state.invoices.length} invoices`}
+					</span>
+				</div>
+				<Filter isDesktop={isDesktop} />
+				<Button primary newInvoice>
+					New {isDesktop && 'Invoice'}
+				</Button>
+			</header>
+			<List />
 		</section>
 	);
 };
