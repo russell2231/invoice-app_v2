@@ -2,11 +2,12 @@ import Filter from './Filter/Filter';
 import Button from '../shared/Button/Button';
 import List from './List/List';
 import { useGlobalContext } from '../App/context';
+import invoiceMessage from '../../helpers/invoiceMessage';
 
 import styles from './Invoices.module.css';
 
 const Invoices = () => {
-	const { filteredInvoices, windowWidth } = useGlobalContext();
+	const { filteredInvoices, filterType, windowWidth } = useGlobalContext();
 	const isDesktop = windowWidth >= 768;
 
 	return (
@@ -15,9 +16,7 @@ const Invoices = () => {
 				<div className={styles.info}>
 					<h1>Invoices</h1>
 					<span>
-						{windowWidth >= 768
-							? `There are ${filteredInvoices.length} total invoices`
-							: `${filteredInvoices.length} invoices`}
+						{invoiceMessage(filteredInvoices, filterType, windowWidth)}
 					</span>
 				</div>
 				<Filter isDesktop={isDesktop} />
