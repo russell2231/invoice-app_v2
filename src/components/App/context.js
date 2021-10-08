@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import useHandleInvoices from '../../hooks/useHandleInvoices';
+import useFilter from '../../hooks/useFilter';
 
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
 	const { state } = useHandleInvoices();
+	const { filterType, changeFilterType, filteredInvoices } = useFilter(state);
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
 	const handleResize = () => {
@@ -20,7 +22,15 @@ const AppProvider = ({ children }) => {
 	}, []);
 
 	return (
-		<AppContext.Provider value={{ state, windowWidth }}>
+		<AppContext.Provider
+			value={{
+				state,
+				windowWidth,
+				filterType,
+				changeFilterType,
+				filteredInvoices,
+			}}
+		>
 			{children}
 		</AppContext.Provider>
 	);

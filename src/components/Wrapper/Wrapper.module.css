@@ -1,7 +1,3 @@
-.wrapper {
-	background: #f8f8fb;
-}
-
 @media screen and (min-width: 1024px) {
 	.wrapper {
 		display: flex;

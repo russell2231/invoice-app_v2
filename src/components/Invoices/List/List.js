@@ -7,8 +7,8 @@ import { IoIosArrowForward } from 'react-icons/io';
 import styles from './List.module.css';
 
 const List = () => {
-	const { state, windowWidth } = useGlobalContext();
-	const isEmpty = state.invoices.length === 0;
+	const { filteredInvoices, windowWidth } = useGlobalContext();
+	const isEmpty = filteredInvoices.length === 0;
 
 	const dateToString = (date) => {
 		const displayOptions = {
@@ -33,7 +33,7 @@ const List = () => {
 
 	return (
 		<ul className={styles.list}>
-			{state.invoices.map(({ id, paymentDue, clientName, total, status }) => (
+			{filteredInvoices.map(({ id, paymentDue, clientName, total, status }) => (
 				<li className={styles.item} key={id}>
 					<Link className={styles.link} to={`/invoice/${id}`}>
 						<p className={styles.id}>

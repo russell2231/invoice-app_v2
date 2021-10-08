@@ -6,7 +6,7 @@ import { useGlobalContext } from '../App/context';
 import styles from './Invoices.module.css';
 
 const Invoices = () => {
-	const { state, windowWidth } = useGlobalContext();
+	const { filteredInvoices, windowWidth } = useGlobalContext();
 	const isDesktop = windowWidth >= 768;
 
 	return (
@@ -16,8 +16,8 @@ const Invoices = () => {
 					<h1>Invoices</h1>
 					<span>
 						{windowWidth >= 768
-							? `There are ${state.invoices.length} total invoices`
-							: `${state.invoices.length} invoices`}
+							? `There are ${filteredInvoices.length} total invoices`
+							: `${filteredInvoices.length} invoices`}
 					</span>
 				</div>
 				<Filter isDesktop={isDesktop} />

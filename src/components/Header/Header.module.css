@@ -51,6 +51,7 @@
 	.header {
 		height: 100vh;
 		flex-direction: column;
+		align-self: flex-start;
 	}
 
 	.actions {
