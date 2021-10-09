@@ -8,7 +8,6 @@ import styles from './List.module.css';
 
 const List = () => {
 	const { filteredInvoices, windowWidth } = useGlobalContext();
-	const isEmpty = filteredInvoices.length === 0;
 
 	const dateToString = (date) => {
 		const displayOptions = {

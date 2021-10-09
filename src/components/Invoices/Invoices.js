@@ -3,12 +3,14 @@ import Button from '../shared/Button/Button';
 import List from './List/List';
 import { useGlobalContext } from '../App/context';
 import invoiceMessage from '../../helpers/invoiceMessage';
+import NoInvoices from './NoInvoices/NoInvoices';
 
 import styles from './Invoices.module.css';
 
 const Invoices = () => {
 	const { filteredInvoices, filterType, windowWidth } = useGlobalContext();
 	const isDesktop = windowWidth >= 768;
+	const isEmpty = filteredInvoices.length === 0;
 
 	return (
 		<section className={styles.container}>
@@ -24,7 +26,8 @@ const Invoices = () => {
 					New {isDesktop && 'Invoice'}
 				</Button>
 			</header>
-			<List />
+			{isEmpty && <NoInvoices />}
+			{!isEmpty && <List />}
 		</section>
 	);
 };
