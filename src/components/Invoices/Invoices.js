@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import Filter from './Filter/Filter';
 import Button from '../shared/Button/Button';
 import List from './List/List';
@@ -11,6 +13,10 @@ const Invoices = () => {
 	const { filteredInvoices, filterType, windowWidth } = useGlobalContext();
 	const isDesktop = windowWidth >= 768;
 	const isEmpty = filteredInvoices.length === 0;
+
+	useEffect(() => {
+		document.title = `Invoices (${filteredInvoices.length})`;
+	}, [filteredInvoices]);
 
 	return (
 		<section className={styles.container}>

@@ -12,6 +12,16 @@
 	color: #fff;
 }
 
+.button.edit {
+	background: #f9fafe;
+	color: #7e88c3;
+}
+
+.button.delete {
+	background: #ec5757;
+	color: #fff;
+}
+
 .newInvoice {
 	padding-left: 46px;
 	position: relative;

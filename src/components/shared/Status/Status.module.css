@@ -1,6 +1,4 @@
 .status {
-	grid-area: status;
-	justify-self: end;
 	border-radius: 6px;
 	width: 104px;
 	background: yellow;
@@ -8,6 +6,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	padding: 13px 18px;
 }
 
 .circle {
@@ -63,9 +62,17 @@
 	color: #373b53;
 }
 
+.status.isList {
+	grid-area: status;
+	justify-self: end;
+}
+
 @media screen and (min-width: 768px) {
 	.status {
-		grid-area: unset;
 		padding: 13px 0;
+	}
+
+	.status.isList {
+		grid-area: unset;
 	}
 }

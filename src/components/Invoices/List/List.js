@@ -44,7 +44,7 @@ const List = () => {
 						</p>
 						<p className={styles['client-name']}>{clientName}</p>
 						<p className={styles.total}>${numberToString(total)}</p>
-						<Status status={status} />
+						<Status status={status} isList />
 						{windowWidth >= 768 && <IoIosArrowForward />}
 					</Link>
 				</li>

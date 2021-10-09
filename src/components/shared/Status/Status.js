@@ -1,6 +1,6 @@
 import styles from './Status.module.css';
 
-const Status = ({ status }) => {
+const Status = ({ status, isList }) => {
 	return (
 		<div
 			className={`${styles.status} ${
@@ -9,7 +9,7 @@ const Status = ({ status }) => {
 					: status === 'pending'
 					? styles.pending
 					: styles.draft
-			}`}
+			} ${isList ? styles.isList : ''}`}
 		>
 			<span className={styles.circle}></span>
 			<p className={styles.text}>{status}</p>

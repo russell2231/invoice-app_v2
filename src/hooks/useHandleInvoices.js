@@ -10,12 +10,39 @@ const postInvoicesToLocalStorage = (invoices) => {
 	localStorage.setItem('invoices', JSON.stringify(invoices));
 };
 
-const initialState = {
+const INITIAL_ADDRESS = {
+	street: '',
+	city: '',
+	postCode: '',
+	country: '',
+};
+
+const INITIAL_ITEM = {
+	name: '',
+	quantity: 0,
+	price: 0,
+	total: 0,
+};
+
+const INITIAL_INVOICE = {
+	createdAt: new Date(),
+	paymentDue: '',
+	description: '',
+	paymentTerms: 30,
+	clientName: '',
+	clientEmail: '',
+	senderAddress: INITIAL_ADDRESS,
+	clientAddress: INITIAL_ADDRESS,
+	items: [],
+	total: 0,
+};
+
+const INITIAL_STATE = {
 	invoices: getInvoicesFromLocalStorage() || data,
 };
 
 const useHandleInvoices = () => {
-	const [state, dispatch] = useReducer(invoicesReducer, initialState);
+	const [state, dispatch] = useReducer(invoicesReducer, INITIAL_STATE);
 
 	useEffect(() => {
 		postInvoicesToLocalStorage(state.invoices);
