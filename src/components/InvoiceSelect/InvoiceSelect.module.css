@@ -50,6 +50,7 @@
 
 	.control {
 		grid-template-columns: auto 0.5fr 0.7fr;
+		padding: 32px;
 		gap: 16px;
 	}
 

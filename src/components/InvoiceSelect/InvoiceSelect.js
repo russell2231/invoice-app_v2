@@ -6,6 +6,7 @@ import Status from '../shared/Status/Status';
 import { IoIosArrowBack } from 'react-icons/io';
 import styles from './InvoiceSelect.module.css';
 import Button from '../shared/Button/Button';
+import InvoiceInfo from '../InvoiceInfo/InvoiceInfo';
 
 const InvoiceSelect = () => {
 	const { state, windowWidth } = useGlobalContext();
@@ -39,6 +40,8 @@ const InvoiceSelect = () => {
 					</div>
 				)}
 			</div>
+
+			<InvoiceInfo invoice={invoice} />
 
 			{isMobile && (
 				<div className={styles.actions}>
