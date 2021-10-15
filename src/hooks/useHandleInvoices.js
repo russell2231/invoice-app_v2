@@ -1,5 +1,6 @@
-import { useReducer, useEffect } from 'react';
-import invoicesReducer from '../store/reducers/invoicesReducer';
+import { useReducer, useEffect, useState } from 'react';
+import { invoicesReducer } from '../store/reducers/invoicesReducer';
+import * as ACTIONS from '../store/actions/invoiceActions';
 import data from '../data/data.json';
 
 const getInvoicesFromLocalStorage = () => {
@@ -39,17 +40,34 @@ const INITIAL_INVOICE = {
 
 const INITIAL_STATE = {
 	invoices: getInvoicesFromLocalStorage() || data,
+	isFormOpen: false,
 };
 
 const useHandleInvoices = () => {
 	const [state, dispatch] = useReducer(invoicesReducer, INITIAL_STATE);
+	const [invoice, setInvoice] = useState(INITIAL_INVOICE);
+	const [items, setItems] = useState([]);
 
 	useEffect(() => {
 		postInvoicesToLocalStorage(state.invoices);
 	}, [state.invoices]);
 
+	// Reducers
+
+	const createInvoice = () => {
+		dispatch(ACTIONS.create());
+	};
+
+	const discard = () => {
+		dispatch(ACTIONS.discard());
+	};
+
 	return {
 		state,
+		invoice,
+		items,
+		createInvoice,
+		discard,
 	};
 };
 

@@ -7,6 +7,10 @@
 	cursor: pointer;
 }
 
+.button.small {
+	padding: 16px;
+}
+
 .button.primary {
 	background: #7c5dfa;
 	color: #fff;
@@ -20,6 +24,11 @@
 .button.delete {
 	background: #ec5757;
 	color: #fff;
+}
+
+.button.draft {
+	background: #373b53;
+	color: #888eb0;
 }
 
 .newInvoice {

@@ -23,7 +23,7 @@ const Filter = ({ isDesktop }) => {
 		return () => {
 			document.removeEventListener('click', clickedOutside);
 		};
-	});
+	}, [isFilterOpen]);
 
 	return (
 		<div className={styles.container}>

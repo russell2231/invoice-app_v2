@@ -10,7 +10,8 @@ import NoInvoices from './NoInvoices/NoInvoices';
 import styles from './Invoices.module.css';
 
 const Invoices = () => {
-	const { filteredInvoices, filterType, windowWidth } = useGlobalContext();
+	const { filteredInvoices, filterType, windowWidth, createInvoice } =
+		useGlobalContext();
 	const isDesktop = windowWidth >= 768;
 	const isEmpty = filteredInvoices.length === 0;
 
@@ -28,7 +29,7 @@ const Invoices = () => {
 					</span>
 				</div>
 				<Filter isDesktop={isDesktop} />
-				<Button primary newInvoice>
+				<Button primary newInvoice onClick={createInvoice}>
 					New {isDesktop && 'Invoice'}
 				</Button>
 			</header>
