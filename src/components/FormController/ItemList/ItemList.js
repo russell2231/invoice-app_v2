@@ -5,38 +5,60 @@ import styles from './ItemList.module.css';
 import Button from '../../shared/Button/Button';
 
 const ItemList = () => {
-	const { items } = useGlobalContext();
+	const { items, windowWidth } = useGlobalContext();
+	const isDesktop = windowWidth >= 768;
 
 	return (
-		<fieldset>
-			<legend>Item List</legend>
-			<div>
+		<fieldset className={styles.container}>
+			<legend className={styles.title}>Item List</legend>
+			<div className={styles.itemList}>
+				{isDesktop && items.length > 0 && (
+					<div className={styles.header}>
+						<label>Item Name</label>
+						<label>Qty.</label>
+						<label>Price</label>
+						<label>Total</label>
+					</div>
+				)}
 				{items.map((item, index) => (
-					<div>
-						<div>
-							<label htmlFor='name'>Item Name</label>
+					<div className={styles.item}>
+						<div className={styles.wrapper}>
+							{!isDesktop && <label htmlFor='name'>Item Name</label>}
 							<input type='text' name='name' id='name' value={item.name} />
 						</div>
-						<div>
-							<label htmlFor='quantity'>Qty.</label>
-							<input
-								type='number'
-								name='quantity'
-								id='quantity'
-								value={item.quantity}
-							/>
+						<div className={styles.group}>
+							<div className={styles.wrapper}>
+								{!isDesktop && <label htmlFor='quantity'>Qty.</label>}
+								<input
+									type='text'
+									name='quantity'
+									id='quantity'
+									value={item.quantity}
+								/>
+							</div>
+							<div className={styles.wrapper}>
+								{!isDesktop && <label htmlFor='price'>Price</label>}
+								<input
+									type='number'
+									name='price'
+									id='price'
+									value={item.price}
+								/>
+							</div>
+							<div className={styles.wrapper}>
+								{!isDesktop && <label htmlFor='total'>Total</label>}
+								<input
+									type='text'
+									name='total'
+									id='total'
+									disabled
+									value={item.total}
+								/>
+							</div>
+							<button type='button' className={styles.delIcon}>
+								<Delete />
+							</button>
 						</div>
-						<div>
-							<label htmlFor='price'>Price</label>
-							<input type='number' name='price' id='price' value={item.price} />
-						</div>
-						<div>
-							<label>Total</label>
-							<span>{item.total}</span>
-						</div>
-						<button type='button'>
-							<Delete />
-						</button>
 					</div>
 				))}
 			</div>

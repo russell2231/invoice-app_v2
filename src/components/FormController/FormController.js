@@ -23,7 +23,7 @@ const FormController = () => {
 						<IoIosArrowBack className={styles.arrow} /> Go Back
 					</Link>
 				)}
-				<Form />
+				<Form isDesktop={isDesktop} />
 				<SubmitController />
 			</div>
 		</>

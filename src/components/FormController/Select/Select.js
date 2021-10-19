@@ -8,7 +8,7 @@ const Select = () => {
 
 	return (
 		<div>
-			<button type='button'>
+			<button type='button' className={styles.button}>
 				Net {invoice.paymentTerms} Days <IoIosArrowDown />
 			</button>
 		</div>

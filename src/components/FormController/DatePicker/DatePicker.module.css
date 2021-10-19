@@ -1,0 +1,17 @@
+.button {
+	padding: 16px 20px;
+	border: 1px solid #dfe3fa;
+	font-size: 1.2rem;
+	font-weight: 700;
+	width: 100%;
+	border-radius: 4px;
+	display: flex;
+	justify-content: space-between;
+	background: transparent;
+}
+
+.button svg {
+	width: 16px;
+	height: 16px;
+	color: #7e88c3;
+}

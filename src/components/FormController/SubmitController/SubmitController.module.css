@@ -10,3 +10,14 @@
 	gap: 7px;
 	box-shadow: 0px -40px 40px 0px rgba(0, 0, 0, 0.1);
 }
+
+@media screen and (min-width: 768px) {
+	.container {
+		position: absolute;
+		padding: 22px 56px;
+	}
+
+	.container button:first-of-type {
+		margin-right: auto;
+	}
+}

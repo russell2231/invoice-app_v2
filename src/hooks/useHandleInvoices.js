@@ -46,7 +46,7 @@ const INITIAL_STATE = {
 const useHandleInvoices = () => {
 	const [state, dispatch] = useReducer(invoicesReducer, INITIAL_STATE);
 	const [invoice, setInvoice] = useState(INITIAL_INVOICE);
-	const [items, setItems] = useState([]);
+	const [items, setItems] = useState([INITIAL_ITEM, INITIAL_ITEM]);
 
 	useEffect(() => {
 		postInvoicesToLocalStorage(state.invoices);

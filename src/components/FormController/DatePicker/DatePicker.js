@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 import { useGlobalContext } from '../../App/context';
 import ReactDatePicker from 'react-datepicker';
 
-import { ReactComponent as Icon } from '../../../assets/icon-calendar.svg';
+import { IoIosCalendar } from 'react-icons/io';
 
 import styles from './DatePicker.module.css';
 
@@ -24,8 +24,10 @@ const CustomInput = forwardRef(({ isDisabled, value, onClick }, ref) => (
 		onClick={onClick}
 		value={value}
 		ref={ref}
+		className={styles.button}
 	>
-		{dateToString(value)} <Icon />
+		{dateToString(value)}
+		<IoIosCalendar />
 	</button>
 ));
 
@@ -36,7 +38,7 @@ const DatePicker = () => {
 		<ReactDatePicker
 			selected={new Date(invoice.createdAt)}
 			minDate={new Date()}
-			CustomInput={<CustomInput />}
+			customInput={<CustomInput />}
 		/>
 	);
 };
