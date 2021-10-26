@@ -1,10 +1,12 @@
 import { forwardRef } from 'react';
 import { useGlobalContext } from '../../App/context';
 import ReactDatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 import { IoIosCalendar } from 'react-icons/io';
 
 import styles from './DatePicker.module.css';
+import './customCalendar.css';
 
 const dateToString = (date) => {
 	const displayOptions = {
@@ -32,13 +34,16 @@ const CustomInput = forwardRef(({ isDisabled, value, onClick }, ref) => (
 ));
 
 const DatePicker = () => {
-	const { invoice } = useGlobalContext();
+	const { invoice, handleInvoiceChange } = useGlobalContext();
 
 	return (
 		<ReactDatePicker
 			selected={new Date(invoice.createdAt)}
 			minDate={new Date()}
+			onChange={(date) => handleInvoiceChange(false, 'date', date)}
 			customInput={<CustomInput />}
+			calendarClassName='calender'
+			showPopperArrow={false}
 		/>
 	);
 };

@@ -27,7 +27,10 @@ const Filter = ({ isDesktop }) => {
 
 	return (
 		<div className={styles.container}>
-			<div className={styles.filter} onClick={() => setIsFilterOpen(true)}>
+			<div
+				className={styles.filter}
+				onClick={() => setIsFilterOpen(!isFilterOpen)}
+			>
 				<span>Filter {isDesktop && 'by status'}</span>
 				<IoIosArrowDown />
 			</div>

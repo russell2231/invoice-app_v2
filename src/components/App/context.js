@@ -5,7 +5,19 @@ import useFilter from '../../hooks/useFilter';
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-	const { state, invoice, items, createInvoice, discard } = useHandleInvoices();
+	const {
+		state,
+		invoice,
+		senderAddress,
+		clientAddress,
+		items,
+		handleInvoiceChange,
+		handleAddItems,
+		handleItemsRemove,
+		handleSubmit,
+		createInvoice,
+		discard,
+	} = useHandleInvoices();
 	const { filterType, changeFilterType, filteredInvoices } = useFilter(state);
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -26,7 +38,13 @@ const AppProvider = ({ children }) => {
 			value={{
 				state,
 				invoice,
+				senderAddress,
+				clientAddress,
 				items,
+				handleInvoiceChange,
+				handleAddItems,
+				handleItemsRemove,
+				handleSubmit,
 				createInvoice,
 				discard,
 				windowWidth,

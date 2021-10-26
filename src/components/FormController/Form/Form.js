@@ -1,9 +1,12 @@
+import { useGlobalContext } from '../../App/context';
 import DatePicker from '../DatePicker/DatePicker';
 import ItemList from '../ItemList/ItemList';
 import Select from '../Select/Select';
 import styles from './Form.module.css';
 
 const Form = () => {
+	const { invoice, handleInvoiceChange } = useGlobalContext();
+
 	return (
 		<>
 			<h1 className={styles.title}>New Invoice</h1>
@@ -16,9 +19,11 @@ const Form = () => {
 						</label>
 						<input
 							type='text'
-							name='senderStreet'
+							name='street'
+							value={invoice.senderAddress.street}
 							id='senderStreet'
 							className={styles.input}
+							onChange={(e) => handleInvoiceChange(e, 'senderAddress')}
 						/>
 					</div>
 
@@ -29,9 +34,11 @@ const Form = () => {
 							</label>
 							<input
 								type='text'
-								name='senderCity'
+								name='city'
+								value={invoice.senderAddress.city}
 								id='senderCity'
 								className={styles.input}
+								onChange={(e) => handleInvoiceChange(e, 'senderAddress')}
 							/>
 						</div>
 						<div className={styles.inputWrapper}>
@@ -40,9 +47,11 @@ const Form = () => {
 							</label>
 							<input
 								type='text'
-								name='senderPostCode'
+								name='postCode'
+								value={invoice.senderAddress.postCode}
 								id='senderPostCode'
 								className={styles.input}
+								onChange={(e) => handleInvoiceChange(e, 'senderAddress')}
 							/>
 						</div>
 
@@ -52,9 +61,11 @@ const Form = () => {
 							</label>
 							<input
 								type='text'
-								name='senderCountry'
+								name='country'
+								value={invoice.senderAddress.country}
 								id='senderCountry'
 								className={styles.input}
+								onChange={(e) => handleInvoiceChange(e, 'senderAddress')}
 							/>
 						</div>
 					</div>
@@ -71,6 +82,8 @@ const Form = () => {
 							name='clientName'
 							id='clientName'
 							className={styles.input}
+							value={invoice.clientName}
+							onChange={(e) => handleInvoiceChange(e, 'invoice')}
 						/>
 					</div>
 
@@ -83,6 +96,8 @@ const Form = () => {
 							name='clientEmail'
 							id='clientEmail'
 							className={styles.input}
+							value={invoice.clientEmail}
+							onChange={(e) => handleInvoiceChange(e, 'invoice')}
 						/>
 					</div>
 
@@ -92,9 +107,11 @@ const Form = () => {
 						</label>
 						<input
 							type='text'
-							name='clientStreet'
+							name='street'
 							id='clientStreet'
 							className={styles.input}
+							value={invoice.clientAddress.street}
+							onChange={(e) => handleInvoiceChange(e, 'clientAddress')}
 						/>
 					</div>
 
@@ -105,9 +122,11 @@ const Form = () => {
 							</label>
 							<input
 								type='text'
-								name='clientCity'
+								name='city'
 								id='clientCity'
 								className={styles.input}
+								value={invoice.clientAddress.city}
+								onChange={(e) => handleInvoiceChange(e, 'clientAddress')}
 							/>
 						</div>
 						<div className={styles.inputWrapper}>
@@ -116,9 +135,11 @@ const Form = () => {
 							</label>
 							<input
 								type='text'
-								name='clientPostCode'
+								name='postCode'
 								id='clientPostCode'
 								className={styles.input}
+								value={invoice.clientAddress.postCode}
+								onChange={(e) => handleInvoiceChange(e, 'clientAddress')}
 							/>
 						</div>
 
@@ -128,9 +149,11 @@ const Form = () => {
 							</label>
 							<input
 								type='text'
-								name='clientCountry'
+								name='country'
 								id='clientCountry'
 								className={styles.input}
+								value={invoice.clientAddress.country}
+								onChange={(e) => handleInvoiceChange(e, 'clientAddress')}
 							/>
 						</div>
 					</div>
@@ -155,6 +178,8 @@ const Form = () => {
 								name='description'
 								id='description'
 								className={styles.input}
+								value={invoice.description}
+								onChange={(e) => handleInvoiceChange(e, 'invoice')}
 							/>
 						</div>
 					</div>

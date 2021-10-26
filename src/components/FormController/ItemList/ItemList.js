@@ -5,7 +5,13 @@ import styles from './ItemList.module.css';
 import Button from '../../shared/Button/Button';
 
 const ItemList = () => {
-	const { items, windowWidth } = useGlobalContext();
+	const {
+		items,
+		windowWidth,
+		handleInvoiceChange,
+		handleAddItems,
+		handleItemsRemove,
+	} = useGlobalContext();
 	const isDesktop = windowWidth >= 768;
 
 	return (
@@ -21,10 +27,16 @@ const ItemList = () => {
 					</div>
 				)}
 				{items.map((item, index) => (
-					<div className={styles.item}>
+					<div className={styles.item} key={index}>
 						<div className={styles.wrapper}>
-							{!isDesktop && <label htmlFor='name'>Item Name</label>}
-							<input type='text' name='name' id='name' value={item.name} />
+							{!isDesktop && <label htmlFor={`name${index}`}>Item Name</label>}
+							<input
+								type='text'
+								name='name'
+								id={`name${index}`}
+								value={item.name}
+								onChange={(e) => handleInvoiceChange(e, 'items', null, index)}
+							/>
 						</div>
 						<div className={styles.group}>
 							<div className={styles.wrapper}>
@@ -34,6 +46,7 @@ const ItemList = () => {
 									name='quantity'
 									id='quantity'
 									value={item.quantity}
+									onChange={(e) => handleInvoiceChange(e, 'items', null, index)}
 								/>
 							</div>
 							<div className={styles.wrapper}>
@@ -43,6 +56,7 @@ const ItemList = () => {
 									name='price'
 									id='price'
 									value={item.price}
+									onChange={(e) => handleInvoiceChange(e, 'items', null, index)}
 								/>
 							</div>
 							<div className={styles.wrapper}>
@@ -55,14 +69,20 @@ const ItemList = () => {
 									value={item.total}
 								/>
 							</div>
-							<button type='button' className={styles.delIcon}>
+							<button
+								type='button'
+								className={styles.delIcon}
+								onClick={() => handleItemsRemove(index)}
+							>
 								<Delete />
 							</button>
 						</div>
 					</div>
 				))}
 			</div>
-			<Button edit>+ Add New Item</Button>
+			<Button type='button' edit onClick={handleAddItems}>
+				+ Add New Item
+			</Button>
 		</fieldset>
 	);
 };

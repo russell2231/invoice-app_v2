@@ -10,7 +10,7 @@ import styles from './FormController.module.css';
 import SubmitController from './SubmitController/SubmitController';
 
 const FormController = () => {
-	const { state, windowWidth, discard } = useGlobalContext();
+	const { state, windowWidth, discard, handleSubmit } = useGlobalContext();
 	const backdropRef = useRef();
 	const isDesktop = windowWidth >= 768;
 
@@ -24,7 +24,7 @@ const FormController = () => {
 					</Link>
 				)}
 				<Form isDesktop={isDesktop} />
-				<SubmitController />
+				<SubmitController discard={discard} submit={handleSubmit} />
 			</div>
 		</>
 	);

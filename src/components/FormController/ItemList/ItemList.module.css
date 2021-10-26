@@ -81,6 +81,10 @@
 	cursor: pointer;
 }
 
+.delIcon:hover svg path {
+	fill: #ec5757;
+}
+
 @media screen and (min-width: 768px) {
 	.container {
 		margin: 0;
@@ -98,6 +102,11 @@
 		display: grid;
 		grid-template-columns: 214px 1fr;
 		gap: 16px;
+	}
+
+	.wrapper input[name='quantity'] {
+		padding: 16px 10px;
+		text-align: center;
 	}
 
 	.wrapper input:disabled {

@@ -8,10 +8,16 @@
 	display: flex;
 	justify-content: space-between;
 	background: transparent;
+	position: relative;
+	cursor: pointer;
 }
 
 .button svg {
 	width: 16px;
 	height: 16px;
 	color: #7e88c3;
+}
+
+.button:hover {
+	border-color: #7c5dfa;
 }
