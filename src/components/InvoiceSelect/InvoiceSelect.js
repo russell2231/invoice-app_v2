@@ -9,7 +9,7 @@ import Button from '../shared/Button/Button';
 import InvoiceInfo from '../InvoiceInfo/InvoiceInfo';
 
 const InvoiceSelect = () => {
-	const { state, windowWidth } = useGlobalContext();
+	const { state, windowWidth, editInvoice } = useGlobalContext();
 	const { id } = useParams();
 	const [invoice, setInvoice] = useState(
 		state.invoices.find((invoice) => invoice.id === id)
@@ -34,7 +34,11 @@ const InvoiceSelect = () => {
 				<Status status={invoice.status} />
 				{!isMobile && (
 					<div className={styles.actions}>
-						{!isPaid && <Button edit>Edit</Button>}
+						{!isPaid && (
+							<Button edit onClick={() => editInvoice(id)}>
+								Edit
+							</Button>
+						)}
 						<Button del>Delete</Button>
 						{!isPaidOrDraft && <Button primary>Mark as Paid</Button>}
 					</div>
@@ -45,7 +49,11 @@ const InvoiceSelect = () => {
 
 			{isMobile && (
 				<div className={styles.actions}>
-					{!isPaid && <Button edit>Edit</Button>}
+					{!isPaid && (
+						<Button edit onClick={() => editInvoice(id)}>
+							Edit
+						</Button>
+					)}
 					<Button del>Delete</Button>
 					{!isPaidOrDraft && <Button primary>Mark as Paid</Button>}
 				</div>

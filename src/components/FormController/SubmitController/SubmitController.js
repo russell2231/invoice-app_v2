@@ -1,17 +1,33 @@
+import { useGlobalContext } from '../../App/context';
 import Button from '../../shared/Button/Button';
 import styles from './SubmitController.module.css';
 
-const SubmitController = ({ discard, submit }) => {
+const SubmitController = () => {
+	const { discard, handleSubmit, state } = useGlobalContext();
+	const isEdited = state.isInvoiceEdited;
+
 	return (
-		<div className={styles.container}>
+		<div className={`${styles.container} ${isEdited ? styles.editing : ''}`}>
 			<Button type='button' edit small onClick={discard}>
-				Discard
+				{!isEdited ? 'Discard' : 'Cancel'}
 			</Button>
-			<Button type='submit' draft small onClick={(e) => submit(e, 'save')}>
-				Save as Draft
-			</Button>
-			<Button type='submit' primary small onClick={(e) => submit(e, 'add')}>
-				Save & Send
+			{!isEdited && (
+				<Button
+					type='submit'
+					draft
+					small
+					onClick={(e) => handleSubmit(e, 'save')}
+				>
+					Save as Draft
+				</Button>
+			)}
+			<Button
+				type='submit'
+				primary
+				small
+				onClick={(e) => handleSubmit(e, 'add')}
+			>
+				{!isEdited ? 'Save & Send' : 'Save Changes'}
 			</Button>
 		</div>
 	);

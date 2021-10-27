@@ -34,14 +34,15 @@ const CustomInput = forwardRef(({ isDisabled, value, onClick }, ref) => (
 ));
 
 const DatePicker = () => {
-	const { invoice, handleInvoiceChange } = useGlobalContext();
+	const { invoice, handleInvoiceChange, state } = useGlobalContext();
+	const isInvoiceEdited = state.isInvoiceEdited;
 
 	return (
 		<ReactDatePicker
 			selected={new Date(invoice.createdAt)}
 			minDate={new Date()}
 			onChange={(date) => handleInvoiceChange(false, 'date', date)}
-			customInput={<CustomInput />}
+			customInput={<CustomInput isDisabled={isInvoiceEdited} />}
 			calendarClassName='calender'
 			showPopperArrow={false}
 		/>

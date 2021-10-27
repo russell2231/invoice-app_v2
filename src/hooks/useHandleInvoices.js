@@ -41,6 +41,8 @@ const INITIAL_INVOICE = {
 const INITIAL_STATE = {
 	invoices: getInvoicesFromLocalStorage() || data,
 	isFormOpen: false,
+	isInvoiceEdited: false,
+	currInvoiceIndex: null,
 };
 
 const useHandleInvoices = () => {
@@ -116,6 +118,14 @@ const useHandleInvoices = () => {
 
 	// Helpers
 
+	const setEditedInvoice = (index) => {
+		const currInvoice = state.invoices.find((invoice) => invoice.id === index);
+		setInvoice(currInvoice);
+		setClientAddress(currInvoice.clientAddress);
+		setSenderAddress(currInvoice.senderAddress);
+		setItems(currInvoice.items);
+	};
+
 	const restoreToInitial = () => {
 		setInvoice(INITIAL_INVOICE);
 		setClientAddress(INITIAL_ADDRESS);
@@ -127,6 +137,11 @@ const useHandleInvoices = () => {
 
 	const createInvoice = () => {
 		dispatch(ACTIONS.create());
+	};
+
+	const editInvoice = (index) => {
+		dispatch(ACTIONS.edit(index));
+		setEditedInvoice(index);
 	};
 
 	const addInvoice = (invoice, state, type) => {
@@ -149,6 +164,7 @@ const useHandleInvoices = () => {
 		handleItemsRemove,
 		handleSubmit,
 		createInvoice,
+		editInvoice,
 		discard,
 	};
 };

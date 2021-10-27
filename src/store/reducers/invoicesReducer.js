@@ -6,7 +6,7 @@ export const invoicesReducer = (state, action) => {
 	}
 
 	if (action.type === ACTION_TYPES.DISCARD) {
-		return { ...state, isFormOpen: false };
+		return { ...state, isFormOpen: false, isInvoiceEdited: false };
 	}
 
 	if (action.type === ACTION_TYPES.ADD_INVOICE) {
@@ -24,5 +24,14 @@ export const invoicesReducer = (state, action) => {
 		];
 
 		return { ...state, isFormOpen: false, invoices: newList };
+	}
+
+	if (action.type === ACTION_TYPES.EDIT) {
+		return {
+			...state,
+			isFormOpen: true,
+			isInvoiceEdited: true,
+			currInvoiceIndex: action.payload.id,
+		};
 	}
 };

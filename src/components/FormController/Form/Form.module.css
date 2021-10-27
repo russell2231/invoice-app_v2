@@ -4,6 +4,10 @@
 	color: #0c0e16;
 }
 
+.title span {
+	color: #888eb0;
+}
+
 .form {
 	position: relative;
 	display: flex;

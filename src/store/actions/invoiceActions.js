@@ -24,3 +24,10 @@ export const add = (invoice, state, type) => {
 		},
 	};
 };
+
+export const edit = (index) => {
+	return {
+		type: ACTION_TYPES.EDIT,
+		payload: { id: index },
+	};
+};

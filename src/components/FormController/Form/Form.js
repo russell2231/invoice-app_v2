@@ -5,11 +5,18 @@ import Select from '../Select/Select';
 import styles from './Form.module.css';
 
 const Form = () => {
-	const { invoice, handleInvoiceChange } = useGlobalContext();
+	const { invoice, handleInvoiceChange, state } = useGlobalContext();
+	const isInvoiceEdited = state.isInvoiceEdited;
 
 	return (
 		<>
-			<h1 className={styles.title}>New Invoice</h1>
+			{!isInvoiceEdited && <h1 className={styles.title}>New Invoice</h1>}
+			{isInvoiceEdited && (
+				<h1 className={styles.title}>
+					Edit <span>#</span>
+					{invoice.id}
+				</h1>
+			)}
 			<form className={styles.form}>
 				<fieldset className={styles.formGroup}>
 					<legend className={styles.formGroupTitle}>Bill From</legend>

@@ -16,6 +16,7 @@ const AppProvider = ({ children }) => {
 		handleItemsRemove,
 		handleSubmit,
 		createInvoice,
+		editInvoice,
 		discard,
 	} = useHandleInvoices();
 	const { filterType, changeFilterType, filteredInvoices } = useFilter(state);
@@ -46,6 +47,7 @@ const AppProvider = ({ children }) => {
 				handleItemsRemove,
 				handleSubmit,
 				createInvoice,
+				editInvoice,
 				discard,
 				windowWidth,
 				filterType,
