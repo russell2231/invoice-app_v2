@@ -18,6 +18,7 @@ const AppProvider = ({ children }) => {
 		createInvoice,
 		editInvoice,
 		discard,
+		toggleModal,
 	} = useHandleInvoices();
 	const { filterType, changeFilterType, filteredInvoices } = useFilter(state);
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -49,6 +50,7 @@ const AppProvider = ({ children }) => {
 				createInvoice,
 				editInvoice,
 				discard,
+				toggleModal,
 				windowWidth,
 				filterType,
 				changeFilterType,

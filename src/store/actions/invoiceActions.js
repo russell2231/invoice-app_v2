@@ -31,3 +31,10 @@ export const edit = (index) => {
 		payload: { id: index },
 	};
 };
+
+export const modal = (index, name) => {
+	return {
+		type: ACTION_TYPES.TOGGLE_MODAL,
+		payload: { name: name ? name : '', id: index ? index : '' },
+	};
+};

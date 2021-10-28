@@ -9,7 +9,7 @@ import Button from '../shared/Button/Button';
 import InvoiceInfo from '../InvoiceInfo/InvoiceInfo';
 
 const InvoiceSelect = () => {
-	const { state, windowWidth, editInvoice } = useGlobalContext();
+	const { state, windowWidth, editInvoice, toggleModal } = useGlobalContext();
 	const { id } = useParams();
 	const [invoice, setInvoice] = useState(
 		state.invoices.find((invoice) => invoice.id === id)
@@ -39,8 +39,14 @@ const InvoiceSelect = () => {
 								Edit
 							</Button>
 						)}
-						<Button del>Delete</Button>
-						{!isPaidOrDraft && <Button primary>Mark as Paid</Button>}
+						<Button del onClick={() => toggleModal(id, 'delete')}>
+							Delete
+						</Button>
+						{!isPaidOrDraft && (
+							<Button primary onClick={() => toggleModal(id, 'status')}>
+								Mark as Paid
+							</Button>
+						)}
 					</div>
 				)}
 			</div>
@@ -54,8 +60,14 @@ const InvoiceSelect = () => {
 							Edit
 						</Button>
 					)}
-					<Button del>Delete</Button>
-					{!isPaidOrDraft && <Button primary>Mark as Paid</Button>}
+					<Button del onClick={() => toggleModal(id, 'delete')}>
+						Delete
+					</Button>
+					{!isPaidOrDraft && (
+						<Button primary onClick={() => toggleModal(id, 'status')}>
+							Mark as Paid
+						</Button>
+					)}
 				</div>
 			)}
 		</div>

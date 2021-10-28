@@ -5,13 +5,16 @@ import Wrapper from '../Wrapper/Wrapper';
 import Invoices from '../Invoices/Invoices';
 import InvoiceSelect from '../InvoiceSelect/InvoiceSelect';
 import FormController from '../FormController/FormController';
+import Modal from '../Modal/Modal';
 
 function App() {
 	const { state } = useGlobalContext();
 	const isFormOpen = state.isFormOpen;
+	const isModalOpen = state.isModalOpen.status;
 
 	return (
 		<Wrapper>
+			{isModalOpen && <Modal />}
 			<Header />
 			{isFormOpen && <FormController />}
 			<Switch>

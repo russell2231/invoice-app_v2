@@ -43,6 +43,7 @@ const INITIAL_STATE = {
 	isFormOpen: false,
 	isInvoiceEdited: false,
 	currInvoiceIndex: null,
+	isModalOpen: { status: false, name: '' },
 };
 
 const useHandleInvoices = () => {
@@ -153,6 +154,10 @@ const useHandleInvoices = () => {
 		restoreToInitial();
 	};
 
+	const toggleModal = (index, name) => {
+		dispatch(ACTIONS.modal(index, name));
+	};
+
 	return {
 		state,
 		invoice,
@@ -166,6 +171,7 @@ const useHandleInvoices = () => {
 		createInvoice,
 		editInvoice,
 		discard,
+		toggleModal,
 	};
 };
 

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../App/context';
@@ -10,9 +10,24 @@ import styles from './FormController.module.css';
 import SubmitController from './SubmitController/SubmitController';
 
 const FormController = () => {
-	const { state, windowWidth, discard, handleSubmit } = useGlobalContext();
+	const { windowWidth, discard, handleSubmit } = useGlobalContext();
 	const backdropRef = useRef();
 	const isDesktop = windowWidth >= 768;
+
+	const handleClickOutsideForm = (e) => {
+		const target = e.target;
+		if (target === backdropRef.current) discard();
+	};
+
+	useEffect(() => {
+		document.addEventListener('click', handleClickOutsideForm);
+		document.body.style.overflow = 'hidden';
+
+		return () => {
+			document.removeEventListener('click', handleClickOutsideForm);
+			document.body.style.overflow = 'unset';
+		};
+	});
 
 	const controller = (
 		<>

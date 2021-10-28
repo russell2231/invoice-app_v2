@@ -34,4 +34,15 @@ export const invoicesReducer = (state, action) => {
 			currInvoiceIndex: action.payload.id,
 		};
 	}
+
+	if (action.type === ACTION_TYPES.TOGGLE_MODAL) {
+		return {
+			...state,
+			isModalOpen: {
+				status: !state.isModalOpen.status,
+				name: action.payload.name,
+			},
+			currInvoiceIndex: action.payload.id,
+		};
+	}
 };
