@@ -25,7 +25,7 @@ const SubmitController = () => {
 				type='submit'
 				primary
 				small
-				onClick={(e) => handleSubmit(e, 'add')}
+				onClick={(e) => handleSubmit(e, `${!isEdited ? 'add' : 'change'}`)}
 			>
 				{!isEdited ? 'Save & Send' : 'Save Changes'}
 			</Button>

@@ -22,6 +22,10 @@ const InvoiceSelect = () => {
 		document.title = `Invoice | #${id}`;
 	}, [id]);
 
+	useEffect(() => {
+		setInvoice(state.invoices.find((invoice) => invoice.id === id));
+	}, [state.invoices, id]);
+
 	return (
 		<div className={styles.container}>
 			<Link to='/' className={styles.back}>

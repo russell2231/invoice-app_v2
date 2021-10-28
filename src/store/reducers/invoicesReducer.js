@@ -35,6 +35,21 @@ export const invoicesReducer = (state, action) => {
 		};
 	}
 
+	if (action.type === ACTION_TYPES.SAVE_CHANGES) {
+		const newList = state.invoices.map((invoice) => {
+			if (invoice.id === state.currInvoiceIndex) {
+				return { ...action.payload.invoice, status: 'pending' };
+			}
+			return invoice;
+		});
+		return {
+			...state,
+			invoices: newList,
+			isFormOpen: false,
+			isInvoiceEdited: false,
+		};
+	}
+
 	if (action.type === ACTION_TYPES.DELETE) {
 		const newList = state.invoices.filter(
 			(invoice) => invoice.id !== state.currInvoiceIndex

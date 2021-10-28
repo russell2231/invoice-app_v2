@@ -110,9 +110,11 @@ const useHandleInvoices = () => {
 		if (type === 'add') {
 			addInvoice(invoice, state, 'new');
 			restoreToInitial();
-		}
-		if (type === 'save') {
+		} else if (type === 'save') {
 			addInvoice(invoice, state, 'draft');
+			restoreToInitial();
+		} else if (type === 'change') {
+			changeInvoice(invoice);
 			restoreToInitial();
 		}
 	};
@@ -147,6 +149,10 @@ const useHandleInvoices = () => {
 
 	const addInvoice = (invoice, state, type) => {
 		dispatch(ACTIONS.add(invoice, state, type));
+	};
+
+	const changeInvoice = (invoice) => {
+		dispatch(ACTIONS.change(invoice));
 	};
 
 	const deleteInvoice = () => {

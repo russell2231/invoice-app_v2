@@ -32,6 +32,20 @@ export const edit = (index) => {
 	};
 };
 
+export const change = (invoice) => {
+	return {
+		type: ACTION_TYPES.SAVE_CHANGES,
+		payload: {
+			invoice: invoice,
+			paymentDue: generatePaymentDueDate(
+				invoice.createdAt,
+				invoice.paymentTerms
+			),
+			status: 'pending',
+		},
+	};
+};
+
 export const remove = () => {
 	return {
 		type: ACTION_TYPES.DELETE,
