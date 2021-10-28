@@ -46,6 +46,21 @@ export const invoicesReducer = (state, action) => {
 		};
 	}
 
+	if (action.type === ACTION_TYPES.PAID) {
+		const newList = state.invoices.map((invoice) => {
+			if (invoice.id === state.currInvoiceIndex) {
+				invoice.status = 'paid';
+			}
+			return invoice;
+		});
+
+		return {
+			...state,
+			invoices: newList,
+			isModalOpen: { status: false, name: '' },
+		};
+	}
+
 	if (action.type === ACTION_TYPES.TOGGLE_MODAL) {
 		return {
 			...state,

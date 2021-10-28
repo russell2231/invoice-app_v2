@@ -18,6 +18,7 @@ const AppProvider = ({ children }) => {
 		createInvoice,
 		editInvoice,
 		deleteInvoice,
+		markInvoicePaid,
 		discard,
 		toggleModal,
 	} = useHandleInvoices();
@@ -51,6 +52,7 @@ const AppProvider = ({ children }) => {
 				createInvoice,
 				editInvoice,
 				deleteInvoice,
+				markInvoicePaid,
 				discard,
 				toggleModal,
 				windowWidth,

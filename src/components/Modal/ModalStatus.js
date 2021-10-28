@@ -1,16 +1,9 @@
-import { useHistory } from 'react-router-dom';
 import { useGlobalContext } from '../App/context';
 import Button from '../shared/Button/Button';
 import styles from './Modal.module.css';
 
 const ModalStatus = () => {
-	const { state, toggleModal } = useGlobalContext();
-	const history = useHistory();
-
-	const reRoute = () => {
-		let path = '/';
-		history.push(path);
-	};
+	const { state, toggleModal, markInvoicePaid } = useGlobalContext();
 
 	return (
 		<div className={styles.modalContent}>
@@ -23,7 +16,9 @@ const ModalStatus = () => {
 				<Button edit onClick={toggleModal}>
 					Cancel
 				</Button>
-				<Button primary>Mark as Paid</Button>
+				<Button primary onClick={markInvoicePaid}>
+					Mark as Paid
+				</Button>
 			</div>
 		</div>
 	);

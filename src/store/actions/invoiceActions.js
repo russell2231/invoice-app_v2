@@ -38,6 +38,12 @@ export const remove = () => {
 	};
 };
 
+export const paid = () => {
+	return {
+		type: ACTION_TYPES.PAID,
+	};
+};
+
 export const modal = (index, name) => {
 	return {
 		type: ACTION_TYPES.TOGGLE_MODAL,

@@ -153,6 +153,10 @@ const useHandleInvoices = () => {
 		dispatch(ACTIONS.remove());
 	};
 
+	const markInvoicePaid = () => {
+		dispatch(ACTIONS.paid());
+	};
+
 	const discard = () => {
 		dispatch(ACTIONS.discard());
 		restoreToInitial();
@@ -175,6 +179,7 @@ const useHandleInvoices = () => {
 		createInvoice,
 		editInvoice,
 		deleteInvoice,
+		markInvoicePaid,
 		discard,
 		toggleModal,
 	};
