@@ -149,6 +149,10 @@ const useHandleInvoices = () => {
 		dispatch(ACTIONS.add(invoice, state, type));
 	};
 
+	const deleteInvoice = () => {
+		dispatch(ACTIONS.remove());
+	};
+
 	const discard = () => {
 		dispatch(ACTIONS.discard());
 		restoreToInitial();
@@ -170,6 +174,7 @@ const useHandleInvoices = () => {
 		handleSubmit,
 		createInvoice,
 		editInvoice,
+		deleteInvoice,
 		discard,
 		toggleModal,
 	};

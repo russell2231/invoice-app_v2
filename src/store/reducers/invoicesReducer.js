@@ -35,6 +35,17 @@ export const invoicesReducer = (state, action) => {
 		};
 	}
 
+	if (action.type === ACTION_TYPES.DELETE) {
+		const newList = state.invoices.filter(
+			(invoice) => invoice.id !== state.currInvoiceIndex
+		);
+		return {
+			...state,
+			invoices: newList,
+			isModalOpen: { status: false, name: '' },
+		};
+	}
+
 	if (action.type === ACTION_TYPES.TOGGLE_MODAL) {
 		return {
 			...state,

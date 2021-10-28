@@ -4,7 +4,7 @@ import Button from '../shared/Button/Button';
 import styles from './Modal.module.css';
 
 const ModalDelete = () => {
-	const { state, toggleModal } = useGlobalContext();
+	const { state, toggleModal, deleteInvoice } = useGlobalContext();
 	const history = useHistory();
 
 	const reRoute = () => {
@@ -23,7 +23,15 @@ const ModalDelete = () => {
 				<Button edit onClick={toggleModal}>
 					Cancel
 				</Button>
-				<Button del>Delete</Button>
+				<Button
+					del
+					onClick={() => {
+						deleteInvoice();
+						reRoute();
+					}}
+				>
+					Delete
+				</Button>
 			</div>
 		</div>
 	);

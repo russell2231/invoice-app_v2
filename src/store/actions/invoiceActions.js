@@ -32,6 +32,12 @@ export const edit = (index) => {
 	};
 };
 
+export const remove = () => {
+	return {
+		type: ACTION_TYPES.DELETE,
+	};
+};
+
 export const modal = (index, name) => {
 	return {
 		type: ACTION_TYPES.TOGGLE_MODAL,
