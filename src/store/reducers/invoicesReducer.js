@@ -38,7 +38,13 @@ export const invoicesReducer = (state, action) => {
 	if (action.type === ACTION_TYPES.SAVE_CHANGES) {
 		const newList = state.invoices.map((invoice) => {
 			if (invoice.id === state.currInvoiceIndex) {
-				return { ...action.payload.invoice, status: 'pending' };
+				return {
+					...action.payload.invoice,
+					status: 'pending',
+					total: action.payload.invoice.items.reduce((curr, acc) => {
+						return (curr += acc.total);
+					}, 0),
+				};
 			}
 			return invoice;
 		});
