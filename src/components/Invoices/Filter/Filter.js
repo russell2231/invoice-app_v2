@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useGlobalContext } from '../../App/context';
 
 import { IoIosArrowDown } from 'react-icons/io';
@@ -8,6 +8,7 @@ import styles from './Filter.module.css';
 const Filter = ({ isDesktop }) => {
 	const { filterType, changeFilterType } = useGlobalContext();
 	const [isFilterOpen, setIsFilterOpen] = useState(false);
+	const ref = useRef();
 
 	useEffect(() => {
 		const clickedOutside = (e) => {
@@ -25,17 +26,18 @@ const Filter = ({ isDesktop }) => {
 		};
 	}, [isFilterOpen]);
 
+	const toggleFilterList = () => {
+		setIsFilterOpen(!isFilterOpen);
+	};
+
 	return (
 		<div className={styles.container}>
-			<div
-				className={styles.filter}
-				onClick={() => setIsFilterOpen(!isFilterOpen)}
-			>
-				<span>Filter {isDesktop && 'by status'}</span>
+			<button className={styles.filter} onClick={toggleFilterList}>
+				Filter {isDesktop && 'by status'}
 				<IoIosArrowDown />
-			</div>
+			</button>
 			{isFilterOpen && (
-				<ul className={styles.list}>
+				<ul className={styles.list} ref={ref}>
 					<li className={styles.item}>
 						<button
 							onClick={(e) => changeFilterType(e)}

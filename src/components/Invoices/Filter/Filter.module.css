@@ -6,10 +6,9 @@
 	display: flex;
 	align-items: center;
 	cursor: pointer;
-}
-
-.filter span {
-	margin-right: 1.2rem;
+	border: none;
+	background: transparent;
+	gap: 12px;
 	font-size: 1.2rem;
 	font-weight: 700;
 }
@@ -24,7 +23,7 @@
 
 .list {
 	position: absolute;
-	z-index: 5;
+	z-index: 100;
 	top: 46px;
 	left: -50px;
 	width: 192px;
