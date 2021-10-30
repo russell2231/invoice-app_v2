@@ -6,6 +6,7 @@ import Button from '../../shared/Button/Button';
 
 const ItemList = () => {
 	const {
+		state,
 		items,
 		windowWidth,
 		handleInvoiceChange,
@@ -13,6 +14,8 @@ const ItemList = () => {
 		handleItemsRemove,
 	} = useGlobalContext();
 	const isDesktop = windowWidth >= 768;
+	const errors =
+		state.errors.err.items === undefined ? false : state.errors.err.items;
 
 	return (
 		<fieldset className={styles.container}>
@@ -28,8 +31,19 @@ const ItemList = () => {
 				)}
 				{items.map((item, index) => (
 					<div className={styles.item} key={index}>
-						<div className={styles.wrapper}>
-							{!isDesktop && <label htmlFor={`name${index}`}>Item Name</label>}
+						<div
+							className={`${styles.wrapper} ${
+								errors[index]?.name ? styles.error : ''
+							}`}
+						>
+							{!isDesktop && (
+								<label htmlFor={`name${index}`}>
+									Item Name
+									{errors[index]?.name && (
+										<span className={styles.error}>can't be empty</span>
+									)}
+								</label>
+							)}
 							<input
 								type='text'
 								name='name'
@@ -39,7 +53,11 @@ const ItemList = () => {
 							/>
 						</div>
 						<div className={styles.group}>
-							<div className={styles.wrapper}>
+							<div
+								className={`${styles.wrapper} ${
+									errors[index]?.quantity ? styles.error : ''
+								}`}
+							>
 								{!isDesktop && <label htmlFor='quantity'>Qty.</label>}
 								<input
 									type='text'
@@ -49,7 +67,11 @@ const ItemList = () => {
 									onChange={(e) => handleInvoiceChange(e, 'items', null, index)}
 								/>
 							</div>
-							<div className={styles.wrapper}>
+							<div
+								className={`${styles.wrapper} ${
+									errors[index]?.price ? styles.error : ''
+								}`}
+							>
 								{!isDesktop && <label htmlFor='price'>Price</label>}
 								<input
 									type='number'

@@ -6,7 +6,11 @@ export const invoicesReducer = (state, action) => {
 	}
 
 	if (action.type === ACTION_TYPES.DISCARD) {
-		return { ...state, isFormOpen: false, isInvoiceEdited: false };
+		return {
+			...state,
+			isFormOpen: false,
+			isInvoiceEdited: false,
+		};
 	}
 
 	if (action.type === ACTION_TYPES.ADD_INVOICE) {
@@ -92,4 +96,16 @@ export const invoicesReducer = (state, action) => {
 			currInvoiceIndex: action.payload.id,
 		};
 	}
+
+	if (action.type === ACTION_TYPES.SET_ERRORS) {
+		return {
+			...state,
+			errors: {
+				err: action.payload.err,
+				msg: action.payload.msg,
+			},
+		};
+	}
+
+	throw new Error('no matching action type');
 };

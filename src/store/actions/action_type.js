@@ -6,3 +6,4 @@ export const SAVE_CHANGES = 'SAVE_CHANGES';
 export const DELETE = 'DELETE';
 export const PAID = 'PAID';
 export const TOGGLE_MODAL = 'TOGGLE_MODAL';
+export const SET_ERRORS = 'SET_ERRORS';

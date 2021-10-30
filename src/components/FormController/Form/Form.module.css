@@ -38,6 +38,8 @@
 .inputWrapper .label {
 	color: #7e88c3;
 	font-weight: 500;
+	display: flex;
+	justify-content: space-between;
 }
 
 .inputWrapper .input {
@@ -52,6 +54,14 @@
 .inputWrapper .input:focus {
 	outline: none;
 	border: 1px solid #7c5dfa;
+}
+
+.inputWrapper.error .label {
+	color: #ec5757;
+}
+
+.inputWrapper.error .input {
+	border-color: #ec5757;
 }
 
 .inputGroupAddress {
@@ -73,6 +83,18 @@
 
 .inputGroupOptions .description {
 	grid-area: description;
+}
+
+.errorContainer {
+	display: flex;
+	flex-direction: column;
+}
+
+.error {
+	font-size: 1rem;
+	color: #ec5757;
+	font-weight: 600;
+	line-height: 1.5;
 }
 
 @media screen and (min-width: 768px) {

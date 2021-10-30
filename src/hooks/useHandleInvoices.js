@@ -1,6 +1,7 @@
 import { useReducer, useEffect, useState } from 'react';
 import { invoicesReducer } from '../store/reducers/invoicesReducer';
 import * as ACTIONS from '../store/actions/invoiceActions';
+import formValidation from '../helpers/formValidation';
 import data from '../data/data.json';
 
 const getInvoicesFromLocalStorage = () => {
@@ -44,6 +45,7 @@ const INITIAL_STATE = {
 	isInvoiceEdited: false,
 	currInvoiceIndex: null,
 	isModalOpen: { status: false, name: '' },
+	errors: { err: {}, msg: [] },
 };
 
 const useHandleInvoices = () => {
@@ -107,13 +109,13 @@ const useHandleInvoices = () => {
 	const handleSubmit = (e, type) => {
 		e.preventDefault();
 
-		if (type === 'add') {
+		if (type === 'add' && formValidation(invoice, setErrors)) {
 			addInvoice(invoice, state, 'new');
 			restoreToInitial();
 		} else if (type === 'save') {
 			addInvoice(invoice, state, 'draft');
 			restoreToInitial();
-		} else if (type === 'change') {
+		} else if (type === 'change' && formValidation(invoice, setErrors)) {
 			changeInvoice(invoice);
 			restoreToInitial();
 		}
@@ -134,6 +136,7 @@ const useHandleInvoices = () => {
 		setClientAddress(INITIAL_ADDRESS);
 		setSenderAddress(INITIAL_ADDRESS);
 		setItems([]);
+		setErrors({}, []);
 	};
 
 	// Dispatchers
@@ -170,6 +173,10 @@ const useHandleInvoices = () => {
 
 	const toggleModal = (index, name) => {
 		dispatch(ACTIONS.modal(index, name));
+	};
+
+	const setErrors = (err, msg) => {
+		dispatch(ACTIONS.errors(err, msg));
 	};
 
 	return {

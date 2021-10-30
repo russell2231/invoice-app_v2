@@ -7,6 +7,8 @@ import styles from './Form.module.css';
 const Form = () => {
 	const { invoice, handleInvoiceChange, state } = useGlobalContext();
 	const isInvoiceEdited = state.isInvoiceEdited;
+	const errors = state.errors.err;
+	const messages = state.errors.msg;
 
 	return (
 		<>
@@ -20,9 +22,16 @@ const Form = () => {
 			<form className={styles.form}>
 				<fieldset className={styles.formGroup}>
 					<legend className={styles.formGroupTitle}>Bill From</legend>
-					<div className={styles.inputWrapper}>
+					<div
+						className={`${styles.inputWrapper} ${
+							errors.senderAddress?.street ? styles.error : ''
+						}`}
+					>
 						<label htmlFor='senderStreet' className={styles.label}>
 							Street Address
+							{errors.senderAddress?.street && (
+								<span className={styles.error}>can't be empty</span>
+							)}
 						</label>
 						<input
 							type='text'
@@ -35,9 +44,16 @@ const Form = () => {
 					</div>
 
 					<div className={styles.inputGroupAddress}>
-						<div className={styles.inputWrapper}>
+						<div
+							className={`${styles.inputWrapper} ${
+								errors.senderAddress?.city ? styles.error : ''
+							}`}
+						>
 							<label htmlFor='senderCity' className={styles.label}>
 								City
+								{errors.senderAddress?.city && (
+									<span className={styles.error}>can't be empty</span>
+								)}
 							</label>
 							<input
 								type='text'
@@ -48,9 +64,16 @@ const Form = () => {
 								onChange={(e) => handleInvoiceChange(e, 'senderAddress')}
 							/>
 						</div>
-						<div className={styles.inputWrapper}>
+						<div
+							className={`${styles.inputWrapper} ${
+								errors.senderAddress?.postCode ? styles.error : ''
+							}`}
+						>
 							<label htmlFor='senderPostCode' className={styles.label}>
 								Post Code
+								{errors.senderAddress?.postCode && (
+									<span className={styles.error}>can't be empty</span>
+								)}
 							</label>
 							<input
 								type='text'
@@ -62,9 +85,16 @@ const Form = () => {
 							/>
 						</div>
 
-						<div className={`${styles.inputWrapper} ${styles.country}`}>
+						<div
+							className={`${styles.inputWrapper} ${styles.country} ${
+								errors.senderAddress?.country ? styles.error : ''
+							}`}
+						>
 							<label htmlFor='senderCountry' className={styles.label}>
 								Country
+								{errors.senderAddress?.country && (
+									<span className={styles.error}>can't be empty</span>
+								)}
 							</label>
 							<input
 								type='text'
@@ -80,9 +110,16 @@ const Form = () => {
 
 				<fieldset className={styles.formGroup}>
 					<legend className={styles.formGroupTitle}>Bill To</legend>
-					<div className={styles.inputWrapper}>
+					<div
+						className={`${styles.inputWrapper} ${
+							errors.clientName ? styles.error : ''
+						}`}
+					>
 						<label htmlFor='clientName' className={styles.label}>
 							Client's Name
+							{errors.clientName && (
+								<span className={styles.error}>can't be empty</span>
+							)}
 						</label>
 						<input
 							type='text'
@@ -94,9 +131,16 @@ const Form = () => {
 						/>
 					</div>
 
-					<div className={styles.inputWrapper}>
+					<div
+						className={`${styles.inputWrapper} ${
+							errors.clientEmail ? styles.error : ''
+						}`}
+					>
 						<label htmlFor='clientEmail' className={styles.label}>
 							Client's Email
+							{errors.clientEmail && (
+								<span className={styles.error}>email is invalid</span>
+							)}
 						</label>
 						<input
 							type='text'
@@ -108,9 +152,16 @@ const Form = () => {
 						/>
 					</div>
 
-					<div className={styles.inputWrapper}>
+					<div
+						className={`${styles.inputWrapper} ${
+							errors.clientAddress?.street ? styles.error : ''
+						}`}
+					>
 						<label htmlFor='clientStreet' className={styles.label}>
 							Street Address
+							{errors.clientAddress?.street && (
+								<span className={styles.error}>can't be empty</span>
+							)}
 						</label>
 						<input
 							type='text'
@@ -123,9 +174,16 @@ const Form = () => {
 					</div>
 
 					<div className={styles.inputGroupAddress}>
-						<div className={styles.inputWrapper}>
+						<div
+							className={`${styles.inputWrapper} ${
+								errors.clientAddress?.city ? styles.error : ''
+							}`}
+						>
 							<label htmlFor='clientCity' className={styles.label}>
 								City
+								{errors.clientAddress?.city && (
+									<span className={styles.error}>can't be empty</span>
+								)}
 							</label>
 							<input
 								type='text'
@@ -136,9 +194,16 @@ const Form = () => {
 								onChange={(e) => handleInvoiceChange(e, 'clientAddress')}
 							/>
 						</div>
-						<div className={styles.inputWrapper}>
+						<div
+							className={`${styles.inputWrapper} ${
+								errors.clientAddress?.postCode ? styles.error : ''
+							}`}
+						>
 							<label htmlFor='clientPostCode' className={styles.label}>
 								Post Code
+								{errors.clientAddress?.postCode && (
+									<span className={styles.error}>can't be empty</span>
+								)}
 							</label>
 							<input
 								type='text'
@@ -150,9 +215,16 @@ const Form = () => {
 							/>
 						</div>
 
-						<div className={`${styles.inputWrapper} ${styles.country}`}>
+						<div
+							className={`${styles.inputWrapper} ${styles.country} ${
+								errors.clientAddress?.country ? styles.error : ''
+							}`}
+						>
 							<label htmlFor='clientCountry' className={styles.label}>
 								Country
+								{errors.clientAddress?.country && (
+									<span className={styles.error}>can't be empty</span>
+								)}
 							</label>
 							<input
 								type='text'
@@ -176,9 +248,16 @@ const Form = () => {
 							<label className={styles.label}>Payment Terms</label>
 							<Select />
 						</div>
-						<div className={`${styles.inputWrapper} ${styles.description}`}>
+						<div
+							className={`${styles.inputWrapper} ${styles.description} ${
+								errors.description ? styles.error : ''
+							}`}
+						>
 							<label htmlFor='description' className={styles.label}>
 								Project Description
+								{errors.description && (
+									<span className={styles.error}>can't be empty</span>
+								)}
 							</label>
 							<input
 								type='text'
@@ -192,6 +271,16 @@ const Form = () => {
 					</div>
 				</fieldset>
 				<ItemList />
+
+				{messages.length > 0 && (
+					<div className={styles.errorContainer}>
+						{messages.map((item, index) => (
+							<span key={index} className={styles.error}>
+								{item}
+							</span>
+						))}
+					</div>
+				)}
 			</form>
 		</>
 	);

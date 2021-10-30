@@ -65,6 +65,16 @@
 	padding: 16px 0;
 }
 
+.wrapper.error label {
+	color: #ec5757;
+	display: flex;
+	justify-content: space-between;
+}
+
+.wrapper.error input {
+	border-color: #ec5757;
+}
+
 .group {
 	display: grid;
 	grid-template-columns: repeat(4, minmax(64px, 1fr));
