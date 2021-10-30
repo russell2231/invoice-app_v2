@@ -5,14 +5,19 @@
 .back {
 	font-size: 1.2rem;
 	display: flex;
-	align-items: center;
 	font-weight: 700;
 	text-decoration: none;
 	color: #0c0e16;
+	transition: color 250ms ease-in-out;
+	gap: 23px;
 }
 
 .back svg {
-	margin-right: 23px;
+	color: #7c5dfa;
+}
+
+.back:hover {
+	color: #7e88c3;
 }
 
 .control {

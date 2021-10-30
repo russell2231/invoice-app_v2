@@ -5,6 +5,7 @@
 	font-weight: 700;
 	font-size: 12px;
 	cursor: pointer;
+	transition: background 250ms ease-in;
 }
 
 .button.small {
@@ -16,9 +17,17 @@
 	color: #fff;
 }
 
+.button.primary:hover {
+	background: #9277ff;
+}
+
 .button.edit {
 	background: #f9fafe;
 	color: #7e88c3;
+}
+
+.button.edit:hover {
+	background: #dfe3fa;
 }
 
 .button.delete {
@@ -26,9 +35,17 @@
 	color: #fff;
 }
 
+.button.delete:hover {
+	background: #ff9797;
+}
+
 .button.draft {
 	background: #373b53;
 	color: #888eb0;
+}
+
+.button.draft:hover {
+	background: #0c0e16;
 }
 
 .newInvoice {
