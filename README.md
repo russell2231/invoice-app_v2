@@ -31,7 +31,7 @@ Hi! This is an invoicing application built with React JS and CSS modules. The ap
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://invoiceapp-rr3.netlify.app/)
+- [Live Site](https://invoiceapp-rr3.netlify.app/)
 
 ## My process
 
